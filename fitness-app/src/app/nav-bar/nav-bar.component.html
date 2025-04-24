@@ -1,1 +1,59 @@
-<p>nav-bar works!</p>
+<!-- Toggle Button -->
+<button
+  class="btn btn-primary m-3"
+  type="button"
+  data-bs-toggle="offcanvas"
+  data-bs-target="#sidebar"
+  aria-controls="sidebar"
+>
+  ☰ Dashbaord
+</button>
+
+<!-- Sidebar -->
+<div
+  class="offcanvas offcanvas-start"
+  tabindex="-1"
+  id="sidebar"
+  aria-labelledby="sidebarLabel"
+>
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="sidebarLabel">Navigation</h5>
+    <button
+      type="button"
+      class="btn-close text-reset"
+      data-bs-dismiss="offcanvas"
+      aria-label="Close"
+    ></button>
+  </div>
+  <div class="offcanvas-body">
+    <ul class="nav flex-column">
+      <li class="nav-item">
+        <a class="nav-link active" routerLink="/dashboard">Dashboard</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/social" style="padding-left: 45px;">Social</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/planner" style="padding-left: 45px;">Planner</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/distance" style="padding-left: 45px;">Distance</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/weight" style="padding-left: 45px;">Weight</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/nutrition" style="padding-left: 45px;">Nutrition</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/sleep" style="padding-left: 45px;">Sleep</a>
+      </li>
+    </ul>
+  </div>
+  <a
+    class="nav-link"
+    routerLink="/settings"
+    style="text-align: bottom; padding-bottom: 20px; padding-left: 30px"
+    >Settings</a
+  >
+</div>
