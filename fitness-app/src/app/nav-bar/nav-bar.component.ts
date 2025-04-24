@@ -4,16 +4,18 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-nav-bar',
-  imports: [RouterModule,],
+  imports: [RouterModule],
   templateUrl: './nav-bar.component.html',
-  styleUrl: './nav-bar.component.css'
+  styleUrl: './nav-bar.component.css',
 })
 export class NavBarComponent {
   currentRoute: string = '';
 
   constructor(private router: Router) {
     this.router.events.subscribe(() => {
-      this.currentRoute = this.capitalizeFirstLetter(this.router.url.split('/')[1]);
+      this.currentRoute = this.capitalizeFirstLetter(
+        this.router.url.split('/')[1]
+      );
     });
   }
 

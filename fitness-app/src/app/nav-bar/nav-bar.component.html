@@ -1,4 +1,3 @@
-<!-- Toggle Button -->
 <button
   class="btn m-3 custom-button"
   type="button"
@@ -9,7 +8,6 @@
   ☰ {{ currentRoute }}
 </button>
 
-<!-- Sidebar -->
 <div
   class="offcanvas offcanvas-start custom-sidebar"
   tabindex="-1"
@@ -33,7 +31,7 @@
           data-bs-dismiss="offcanvas"
           routerLink="/dashboard"
           routerLinkActive="active"
-          [routerLinkActiveOptions]="{ exact: true}"
+          [routerLinkActiveOptions]="{ exact: true }"
           >Dashboard</a
         >
       </li>
@@ -43,7 +41,7 @@
           data-bs-dismiss="offcanvas"
           routerLink="/social"
           routerLinkActive="active"
-          [routerLinkActiveOptions]="{ exact: true}"
+          [routerLinkActiveOptions]="{ exact: true }"
           >Social</a
         >
       </li>
@@ -53,7 +51,7 @@
           data-bs-dismiss="offcanvas"
           routerLink="/planner"
           routerLinkActive="active"
-          [routerLinkActiveOptions]="{ exact: true}"
+          [routerLinkActiveOptions]="{ exact: true }"
           >Planner</a
         >
       </li>
@@ -63,7 +61,7 @@
           data-bs-dismiss="offcanvas"
           routerLink="/distance"
           routerLinkActive="active"
-          [routerLinkActiveOptions]="{ exact: true}"
+          [routerLinkActiveOptions]="{ exact: true }"
           >Distance</a
         >
       </li>
@@ -73,7 +71,7 @@
           data-bs-dismiss="offcanvas"
           routerLink="/weight"
           routerLinkActive="active"
-          [routerLinkActiveOptions]="{ exact: true}"
+          [routerLinkActiveOptions]="{ exact: true }"
           >Weight</a
         >
       </li>
@@ -83,7 +81,7 @@
           data-bs-dismiss="offcanvas"
           routerLink="/nutrition"
           routerLinkActive="active"
-          [routerLinkActiveOptions]="{ exact: true}"
+          [routerLinkActiveOptions]="{ exact: true }"
           >Nutrition</a
         >
       </li>
@@ -93,13 +91,17 @@
           data-bs-dismiss="offcanvas"
           routerLink="/sleep"
           routerLinkActive="active"
-          [routerLinkActiveOptions]="{ exact: true}"
+          [routerLinkActiveOptions]="{ exact: true }"
           >Sleep</a
         >
       </li>
     </ul>
   </div>
-  <button class="btn m-2 settings-button" routerLink="settings" data-bs-dismiss="offcanvas">
+  <button
+    class="btn m-2 settings-button"
+    routerLink="settings"
+    data-bs-dismiss="offcanvas"
+  >
     Settings
     <i class="bi bi-gear"></i>
   </button>
