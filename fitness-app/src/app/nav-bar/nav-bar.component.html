@@ -1,17 +1,17 @@
 <!-- Toggle Button -->
 <button
-  class="btn btn-primary m-3"
+  class="btn m-3 custom-button"
   type="button"
   data-bs-toggle="offcanvas"
   data-bs-target="#sidebar"
   aria-controls="sidebar"
 >
-  ☰ Dashbaord
+  ☰ {{ currentRoute }}
 </button>
 
 <!-- Sidebar -->
 <div
-  class="offcanvas offcanvas-start"
+  class="offcanvas offcanvas-start custom-sidebar"
   tabindex="-1"
   id="sidebar"
   aria-labelledby="sidebarLabel"
@@ -91,11 +91,8 @@
       </li>
     </ul>
   </div>
-  <a
-    class="nav-link"
-    routerLink="/settings"
-    style="text-align: bottom; padding-bottom: 20px; padding-left: 30px"
-    data-bs-dismiss="offcanvas"
-    >Settings</a
-  >
+  <button class="btn m-2 settings-button" routerLink="settings" data-bs-dismiss="offcanvas">
+    Settings
+    <i class="bi bi-gear"></i>
+  </button>
 </div>
