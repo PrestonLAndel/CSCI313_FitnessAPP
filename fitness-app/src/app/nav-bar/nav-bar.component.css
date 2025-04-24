@@ -19,8 +19,12 @@
   background-color: black;
   color: white;
 }
-.settings-button:hover{
-    background-color: white !important;
-    color: black !important;
-    outline: 2px solid black !important;
+.settings-button:hover {
+  background-color: white !important;
+  color: black !important;
+  outline: 2px solid black !important;
+}
+.active {
+  padding-left: 45px;
+  pointer-events: none;
 }
