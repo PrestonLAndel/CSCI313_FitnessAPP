@@ -1,0 +1,8 @@
+.change-button{
+    outline: 2px solid black !important;
+    background-color: white;
+    color: black;
+}
+.change-button:hover{
+    background-color: grey;
+}

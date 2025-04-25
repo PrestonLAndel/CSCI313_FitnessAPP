@@ -2,6 +2,8 @@
 <input type="number" [(ngModel)]="inputWeight" placeholder="Enter weight" />
 <button class="submit" (click)="submitWeight()">Submit</button>
 
+<h5>Goal {{goalWeight}}</h5>
+<h5>To Go {{weightToGo}}</h5>
 <h3>Weight Chart</h3>
 <div style="height: 400px; width: 600px">
   <canvas id="lineChart"></canvas>

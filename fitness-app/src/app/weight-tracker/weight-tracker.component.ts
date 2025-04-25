@@ -14,6 +14,7 @@ import { WeightService } from '../weight.service';
 export class WeightTrackerComponent implements AfterViewInit {
   inputWeight: number | null = null;
   chart: Chart | null = null;
+  public goalWeight = 165;
 
   constructor(public weightservice: WeightService) {}
 
@@ -50,6 +51,8 @@ export class WeightTrackerComponent implements AfterViewInit {
     }
   }
 
+  public weightToGo = 0;
+
   submitWeight(): void {
     if (this.inputWeight !== null) {
       // Add weight and update weight count
@@ -64,9 +67,7 @@ export class WeightTrackerComponent implements AfterViewInit {
         this.chart.data.datasets[0].data = this.weightservice.getWeights();
         this.chart.update();
       }
-
-      // Clear input
-      this.inputWeight = null;
     }
+    this.weightToGo = this.weightservice.getLastWeight() - this.goalWeight;
   }
 }

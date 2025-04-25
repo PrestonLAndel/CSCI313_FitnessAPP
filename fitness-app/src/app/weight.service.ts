@@ -32,4 +32,9 @@ export class WeightService {
     }
     return newNum;
   }
+
+  getLastWeight():number{
+    let num = this.weights[this.weights.length-1];
+    return num;
+  }
 }
