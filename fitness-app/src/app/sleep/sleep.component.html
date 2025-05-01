@@ -1,1 +1,31 @@
-<p>sleep works!</p>
+<div class="sleep-container">
+  <h2>Sleep Tracker</h2>
+
+  <!-- Sleep entry form -->
+  <form (ngSubmit)="addEntry()" #sleepForm="ngForm">
+    <label for="date">Date:</label>
+    <input type="date" [(ngModel)]="date" name="date" required>
+
+    <label for="hours">Hours Slept:</label>
+    <input type="number" [(ngModel)]="hours" name="hours" required min="0" step="0.1">
+
+    <button type="submit">Add Entry</button>
+    <button type="button" (click)="clearSleepData()">Clear Sleep History</button>
+  </form>
+
+  <h3>Sleep History</h3>
+  <!-- Table displaying saved sleep data -->
+  <table *ngIf="sleepData.length > 0">
+    <tr>
+      <th>Date</th>
+      <th>Hours</th>
+    </tr>
+    <tr *ngFor="let entry of sleepData">
+      <td>{{ entry.date }}</td>
+      <td>{{ entry.hours }}</td>
+    </tr>
+  </table>
+
+  <!-- Message when there's no data -->
+  <p *ngIf="sleepData.length === 0">No sleep data yet.</p>
+</div>

@@ -1,0 +1,29 @@
+.sleep-container {
+    max-width: 400px;
+    margin: auto;
+    padding: 1rem;
+  }
+  
+  .sleep-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .sleep-container input,
+  .sleep-container button {
+    padding: 0.5rem;
+  }
+  
+  .sleep-container table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .sleep-container th,
+  .sleep-container td {
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+  }
+  
