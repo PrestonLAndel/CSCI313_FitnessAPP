@@ -26,9 +26,7 @@ export class WeightTrackerComponent implements AfterViewInit {
       this.chart = new Chart(canvas, {
         type: 'line',
         data: {
-          labels: this.weightservice.numToString(
-            this.weightservice.getNumberOfWeights()
-          ),
+          labels: this.weightservice.getDateArray(),
           datasets: [
             {
               label: 'Weight (lbs)',
@@ -58,16 +56,22 @@ export class WeightTrackerComponent implements AfterViewInit {
       // Add weight and update weight count
       this.weightservice.addWeight(this.inputWeight);
       this.weightservice.addNumberOfWeights();
+      this.weightservice.addDateToArray();
 
       // Update the chart if it exists
       if (this.chart) {
-        this.chart.data.labels = this.weightservice.numToString(
-          this.weightservice.getNumberOfWeights()
-        );
+        this.chart.data.labels = this.weightservice.getDateArray();
         this.chart.data.datasets[0].data = this.weightservice.getWeights();
         this.chart.update();
       }
     }
     this.weightToGo = this.weightservice.getLastWeight() - this.goalWeight;
   }
+
+  clearLocalStorage(): void {
+    localStorage.clear(); // Removes all stored data
+    this.weightservice.clearStoredData(); // Clears in-memory data
+    this.chart?.destroy(); // Resets the chart
+    window.location.reload(); // Refreshes the page for a full reset
+  }  
 }

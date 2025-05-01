@@ -1,17 +1,26 @@
-<p></p>
-<input type="number" [(ngModel)]="inputWeight" placeholder="Enter weight" />
-<button class="submit" (click)="submitWeight()">Submit</button>
+<div class="custom-weight-stuff">
+  <h2>Weight Tracker</h2>
 
-<h5>Goal {{goalWeight}}</h5>
-<h5>To Go {{weightToGo}}</h5>
-<h3>Weight Chart</h3>
-<div style="height: 400px; width: 600px">
-  <canvas id="lineChart"></canvas>
+  <div class="input-container">
+    <input type="number" [(ngModel)]="inputWeight" placeholder="Enter weight" />
+    <button class="submit-button" (click)="submitWeight()">Track</button>
+  </div>
+
+  <div class="goal-container">
+    <h4>
+      Goal Weight: <span>{{ goalWeight }}</span>
+    </h4>
+    <h4>
+      Weight Left: <span>{{ weightToGo }}</span>
+    </h4>
+  </div>
+
+  <div class="chart-container">
+    <h3>Progress Chart</h3>
+    <div class="center-line-chart">
+      <canvas id="lineChart"></canvas>
+    </div>
+  </div>
 </div>
 
-<h4>Stored Weights:</h4>
-<ul style="list-style-type: none">
-  <li *ngFor="let w of weightservice.getWeights(); let i = index">
-    {{ w }}
-  </li>
-</ul>
+<button class="clear-button" (click)="clearLocalStorage()">Clear Data</button>
