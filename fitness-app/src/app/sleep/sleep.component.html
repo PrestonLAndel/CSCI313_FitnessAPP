@@ -1,31 +1,28 @@
 <div class="sleep-container">
   <h2>Sleep Tracker</h2>
 
-  <!-- Sleep entry form -->
   <form (ngSubmit)="addEntry()" #sleepForm="ngForm">
     <label for="date">Date:</label>
-    <input type="date" [(ngModel)]="date" name="date" required>
+    <input type="date" id="date" [(ngModel)]="date" name="date" required>
 
     <label for="hours">Hours Slept:</label>
-    <input type="number" [(ngModel)]="hours" name="hours" required min="0" step="0.1">
+    <input type="number" id="hours" [(ngModel)]="hours" name="hours" min="0" max="24" required>
 
-    <button type="submit">Add Entry</button>
-    <button type="button" (click)="clearSleepData()">Clear Sleep History</button>
+    <div class="error" *ngIf="errorMessage">{{ errorMessage }}</div>
+
+    <button type="submit" [disabled]="!sleepForm.valid">Add Entry</button>
+    <button type="button" (click)="clearEntries()">Clear All</button>
   </form>
 
-  <h3>Sleep History</h3>
-  <!-- Table displaying saved sleep data -->
-  <table *ngIf="sleepData.length > 0">
-    <tr>
-      <th>Date</th>
-      <th>Hours</th>
-    </tr>
-    <tr *ngFor="let entry of sleepData">
-      <td>{{ entry.date }}</td>
-      <td>{{ entry.hours }}</td>
-    </tr>
-  </table>
+  <div *ngIf="sleepData.length > 0" class="summary">
+    <p><strong>Total Average:</strong> {{ totalAverageHours }} hrs</p>
+    <p><strong>Last 7 Days Average:</strong> {{ weeklyAverageHours }} hrs ({{ weeklyEntryCount }} entries)</p>
+  </div>
 
-  <!-- Message when there's no data -->
-  <p *ngIf="sleepData.length === 0">No sleep data yet.</p>
+  <ul>
+    <li *ngFor="let entry of sleepData; let i = index">
+      {{ entry.date }} - {{ entry.hours }} hours
+      <button class="delete" (click)="deleteEntry(i)">Delete</button>
+    </li>
+  </ul>
 </div>

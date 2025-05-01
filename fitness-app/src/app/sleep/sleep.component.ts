@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 interface SleepEntry {
   date: string;
@@ -16,38 +16,85 @@ interface SleepEntry {
 })
 export class SleepComponent implements OnInit {
   sleepData: SleepEntry[] = [];
-  hours: number = 0;
   date: string = '';
+  hours: number | null = null;
+  errorMessage: string = '';
 
-  ngOnInit(): void {
-    // Load data from localStorage
-    const saved = localStorage.getItem('sleepData');
-    if (saved) {
-      this.sleepData = JSON.parse(saved);
+  ngOnInit() {
+    const savedData = localStorage.getItem('sleepData');
+    if (savedData) {
+      this.sleepData = JSON.parse(savedData);
+      this.sortSleepData();
     }
-    this.date = this.getYesterdayDate();
+    this.setDefaultDate();
+  }
+
+  setDefaultDate() {
+    const today = new Date();
+    this.date = today.toISOString().split('T')[0];
   }
 
   addEntry() {
-    if (this.hours > 0 && this.date) {
-      const numericHours = Number(this.hours); // Ensure hours is a number
-      this.sleepData.push({ date: this.date, hours: numericHours });
-      // Save to localStorage
-      localStorage.setItem('sleepData', JSON.stringify(this.sleepData));
-      this.hours = 0;
-      this.date = this.getYesterdayDate();
+    if (!this.date || this.hours === null || this.hours < 0 || this.hours > 24) {
+      this.errorMessage = 'Please enter a valid number of hours (0–24).';
+      return;
     }
+
+    this.sleepData.push({ date: this.date, hours: this.hours });
+    this.sortSleepData();
+    this.saveToLocalStorage();
+    this.date = '';
+    this.hours = null;
+    this.setDefaultDate();
+    this.errorMessage = '';
   }
 
-  clearSleepData() {
-    // Clear all sleep data and reset localStorage
+  deleteEntry(index: number) {
+    this.sleepData.splice(index, 1);
+    this.saveToLocalStorage();
+  }
+
+  clearEntries() {
     this.sleepData = [];
     localStorage.removeItem('sleepData');
   }
 
-  getYesterdayDate(): string {
-    const d = new Date();
-    d.setDate(d.getDate() - 1);
-    return d.toISOString().split('T')[0];
+  saveToLocalStorage() {
+    localStorage.setItem('sleepData', JSON.stringify(this.sleepData));
+  }
+
+  sortSleepData() {
+    this.sleepData.sort((a, b) => b.date.localeCompare(a.date));
+  }
+
+  get totalAverageHours(): number {
+    if (this.sleepData.length === 0) return 0;
+    const total = this.sleepData.reduce((sum, entry) => sum + entry.hours, 0);
+    return +(total / this.sleepData.length).toFixed(2);
+  }
+
+  get weeklyAverageHours(): number {
+    const oneWeekAgo = new Date();
+    oneWeekAgo.setDate(oneWeekAgo.getDate() - 6);
+
+    const recentEntries = this.sleepData.filter(entry => {
+      const entryDate = new Date(entry.date);
+      return entryDate >= oneWeekAgo;
+    });
+
+    if (recentEntries.length === 0) return 0;
+
+    const total = recentEntries.reduce((sum, entry) => sum + entry.hours, 0);
+    return +(total / recentEntries.length).toFixed(2);
+  }
+
+  get weeklyEntryCount(): number {
+    const oneWeekAgo = new Date();
+    oneWeekAgo.setDate(oneWeekAgo.getDate() - 6);
+
+    return this.sleepData.filter(entry => {
+      const entryDate = new Date(entry.date);
+      return entryDate >= oneWeekAgo;
+    }).length;
   }
 }
