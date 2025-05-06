@@ -1,61 +1,104 @@
+/* Distance Tracker container */
 .distance-tracker {
-    padding: 20px;
-    max-width: 600px;
-    margin: 0 auto;
-    font-family: Arial, sans-serif;
-  }
-  
-  form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    margin-bottom: 20px;
-  }
-  
-  label {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-weight: bold;
-  }
-  
-  input, select {
-    flex: 1;
-    padding: 8px;
-    margin-left: 10px;
-    font-size: 1rem;
-  }
-  
-  button {
-    width: fit-content;
-    align-self: flex-end;
-    padding: 8px 16px;
-    background-color: #4caf50;
-    color: white;
-    border: none;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: #388e3c;
-  }
-  
-  .entry-list {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  .entry-list li {
-    padding: 10px;
-    border-bottom: 1px solid #ddd;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .entry-list button {
-    background-color: #e53935;
-    padding: 5px 10px;
-    font-size: 0.9rem;
-  }
-  
+  width: 100%;
+  max-width: 600px;
+  margin: auto;
+  text-align: center;
+  padding: 20px;
+  border-radius: 10px;
+  background: white;
+  color: black;
+  border: 2px solid black;
+}
+
+h2 {
+  margin-bottom: 20px;
+}
+
+/* Form group styling */
+.form-group {
+  margin-bottom: 15px;
+  text-align: left;
+  width: 100%;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 16px;
+}
+
+input[type="number"],
+select {
+  padding: 8px;
+  border: 2px solid black;
+  background: white;
+  color: black;
+  font-size: 16px;
+  width: 100%;
+  box-sizing: border-box; /* Makes sure padding does not affect width */
+}
+
+button[type="submit"] {
+  padding: 8px 15px;
+  background-color: black;
+  color: white;
+  border: 2px solid black;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: white;
+  color: black;
+  border: 2px solid black;
+}
+
+.sort-group {
+  margin-top: 20px;
+}
+
+.sort-group label {
+  font-size: 16px;
+}
+
+.sort-group select {
+  padding: 8px;
+  border: 2px solid black;
+  background: white;
+  color: black;
+  font-size: 16px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.entry-list {
+  margin-top: 20px;
+  list-style: none;
+  padding: 0;
+}
+
+.entry-list li {
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 2px solid black;
+  background: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.entry-list button {
+  padding: 5px 10px;
+  background-color: black;
+  color: white;
+  border: 2px solid black;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.entry-list button:hover {
+  background-color: white;
+  color: black;
+  border: 2px solid black;
+}
