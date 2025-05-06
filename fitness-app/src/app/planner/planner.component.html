@@ -1,7 +1,9 @@
 <div class="calendar">
-  <button (click)="changeMonth(-1)">Previous</button>
-  <h2>{{ currentMonth.toLocaleString('default', { month: 'long' }) }} {{ currentMonth.getFullYear() }}</h2>
-  <button (click)="changeMonth(1)">Next</button>
+  <div class="calendar-header">
+    <button class="nav-button prev" (click)="changeMonth(-1)">&#8592;</button> <!-- Left arrow -->
+    <h2>{{ currentMonth.toLocaleString('default', { month: 'long' }) }} {{ currentMonth.getFullYear() }}</h2>
+    <button class="nav-button next" (click)="changeMonth(1)">&#8594;</button> <!-- Right arrow -->
+  </div>
 
   <div class="calendar-grid">
     <div class="day-header">Sun</div>

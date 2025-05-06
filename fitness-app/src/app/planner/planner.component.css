@@ -1,125 +1,133 @@
+/* Calendar container */
 .calendar {
-  text-align: center;
-  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
 }
 
+/* Button styling */
+button {
+  padding: 10px;
+  margin: 5px;
+  background-color: black;
+  color: white;
+  border: 2px solid black;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: white;
+  color: black;
+  border: 2px solid black;
+}
+
+/* Calendar grid for days */
 .calendar-grid {
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
+  grid-template-columns: repeat(7, 1fr); /* 7 columns for each day of the week */
   gap: 10px;
   margin-top: 20px;
 }
 
 .day-header {
+  text-align: center;
   font-weight: bold;
+}
+
+/* ADDED: Make header align with calendar */
+.calendar-header {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  width: 100%;
+  gap: 10px;
+  margin-top: 20px;
+  text-align: center;
 }
 
 .calendar-day {
-  border: 1px solid #ddd;
-  padding: 10px;
-  min-height: 100px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   align-items: center;
-  background: #f9f9f9;
+  padding: 10px;
+  border: 2px solid black; /* Black border */
+  background-color: white; /* White background */
+  min-width: 50px;
+  min-height: 50px;
 }
 
 .day-number {
-  font-weight: bold;
-  margin-bottom: 5px;
-}
-
-.calendar-day button {
-  background-color: #4caf50;
-  color: white;
-  border: none;
-  padding: 6px 10px;
-  cursor: pointer;
-  border-radius: 4px;
-}
-
-.calendar-day button:hover {
-  background-color: #388e3c;
-}
-
-.event-list {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 6px;
-  margin-bottom: 8px;
-}
-
-li {
-  background-color: #e0f2f1;
-  padding: 6px 8px;
-  border-radius: 6px;
-  max-width: 90%;
-  font-size: 13px;
-  list-style: none;
-  text-align: left;
-  white-space: pre-wrap;
-  word-wrap: break-word;
-  cursor: pointer;
-}
-
-li .event-title {
+  font-size: 18px;
   font-weight: bold;
 }
 
-li .event-desc {
-  font-size: 12px;
-  color: #555;
-  margin-top: 2px;
+.events {
+  margin-top: 10px;
 }
 
-/* Popup styling */
+/* Event dialog styles */
 .event-dialog {
   position: fixed;
   top: 30%;
   left: 50%;
   transform: translate(-50%, -30%);
-  background: white;
-  border: 1px solid #ccc;
   padding: 20px;
+  background-color: white;
+  border: 2px solid black;
   z-index: 1000;
-  width: 300px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  border-radius: 8px;
-  text-align: left;
 }
 
-.event-dialog h3 {
-  text-align: center;
-  margin-bottom: 15px;
-}
-
+/* Input and textarea inside event dialog */
 .event-dialog input,
 .event-dialog textarea {
   width: 100%;
   padding: 8px;
-  margin-bottom: 12px;
-  font-size: 14px;
-  box-sizing: border-box;
+  margin: 10px 0;
+  border: 1px solid black;
 }
 
+/* Save, cancel, delete buttons inside the event dialog */
 .event-dialog button {
-  padding: 8px 12px;
-  margin-right: 10px;
-  font-size: 14px;
-  cursor: pointer;
-  border: none;
-  border-radius: 4px;
-}
-
-.event-dialog button:first-of-type {
-  background-color: #4caf50;
+  background-color: black;
   color: white;
+  padding: 10px;
+  border: 2px solid black;
+  cursor: pointer;
+  width: 100%;
 }
 
-.event-dialog button:last-of-type {
-  background-color: #ccc;
+.event-dialog button:hover {
+  background-color: white;
   color: black;
+  border: 2px solid black;
+}
+
+/* Calendar header container */
+.calendar-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px; /* Adds space between buttons and the month name */
+}
+
+/* Styling for navigation buttons */
+.nav-button {
+  padding: 10px;
+  background-color: black;
+  color: white;
+  border: 2px solid black;
+  cursor: pointer;
+  font-size: 18px; /* Adjust the size of the arrows */
+}
+
+.nav-button:hover {
+  background-color: white;
+  color: black;
+  border: 2px solid black;
+}
+
+/* Optional: Adjust the month display text if needed */
+.calendar-header h2 {
+  font-size: 20px;
+  margin: 0; /* Removes margin around the h2 */
 }
