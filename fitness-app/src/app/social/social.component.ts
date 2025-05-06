@@ -13,40 +13,32 @@ interface Friend {
   templateUrl: './social.component.html',
   styleUrls: ['./social.component.css']
 })
-export class SocialComponent implements OnInit {
-  name: string = '';
-  bio: string = '';
-  newFriend: string = '';
-  friends: Friend[] = [];
 
-  ngOnInit() {
-    const savedProfile = localStorage.getItem('socialProfile');
-    const savedFriends = localStorage.getItem('friendsList');
-    if (savedProfile) {
-      const profile = JSON.parse(savedProfile);
-      this.name = profile.name;
-      this.bio = profile.bio;
-    }
-    this.friends = savedFriends ? JSON.parse(savedFriends) : [];
+export class SocialComponent {
+  name: string = 'John Doe';
+  bio: string = 'This is my bio.';
+  newFriend: string = '';
+  friends: any[] = [];
+  isEditing: boolean = false;  // To toggle between Edit and View mode
+
+  editProfile() {
+    this.isEditing = true;
   }
 
   saveProfile() {
-    localStorage.setItem('socialProfile', JSON.stringify({ name: this.name, bio: this.bio }));
+    // Logic to save the profile (e.g., save to local storage, API, etc.)
+    console.log('Profile saved:', this.name, this.bio);
+    this.isEditing = false;
   }
 
   addFriend() {
-    if (!this.newFriend.trim()) return;
-    this.friends.push({ name: this.newFriend.trim() });
-    this.newFriend = '';
-    this.saveFriends();
+    if (this.newFriend) {
+      this.friends.push({ name: this.newFriend });
+      this.newFriend = '';  // Clear the input after adding
+    }
   }
 
   deleteFriend(index: number) {
     this.friends.splice(index, 1);
-    this.saveFriends();
-  }
-
-  saveFriends() {
-    localStorage.setItem('friendsList', JSON.stringify(this.friends));
   }
 }
