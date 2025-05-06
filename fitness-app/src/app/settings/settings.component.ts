@@ -110,6 +110,7 @@ export class SettingsComponent implements OnInit {
     const keysToRemove = [
       'sleepData',
       'weights',
+      'plannerEvents',
       'distanceEntries',
       'nutritionEntries',
       'socialProfile',
