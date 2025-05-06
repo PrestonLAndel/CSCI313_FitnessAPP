@@ -7,7 +7,7 @@ import { WeightService } from '../weight.service';
 @Component({
   selector: 'app-weight-tracker',
   standalone: true,
-  imports: [FormsModule, NgFor],
+  imports: [FormsModule],
   templateUrl: './weight-tracker.component.html',
   styleUrl: './weight-tracker.component.css',
 })
