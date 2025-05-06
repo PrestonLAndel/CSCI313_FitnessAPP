@@ -1,8 +1,13 @@
 <div class="calendar">
   <div class="calendar-header">
-    <button class="nav-button prev" (click)="changeMonth(-1)">&#8592;</button> <!-- Left arrow -->
-    <h2>{{ currentMonth.toLocaleString('default', { month: 'long' }) }} {{ currentMonth.getFullYear() }}</h2>
-    <button class="nav-button next" (click)="changeMonth(1)">&#8594;</button> <!-- Right arrow -->
+    <button class="nav-button prev" (click)="changeMonth(-1)">&#8592;</button>
+    <!-- Left arrow -->
+    <h2>
+      {{ currentMonth.toLocaleString("default", { month: "long" }) }}
+      {{ currentMonth.getFullYear() }}
+    </h2>
+    <button class="nav-button next" (click)="changeMonth(1)">&#8594;</button>
+    <!-- Right arrow -->
   </div>
 
   <div class="calendar-grid">
@@ -20,12 +25,19 @@
 
         <div *ngIf="events[day.toISOString().split('T')[0]]" class="event-list">
           <details>
-            <summary>Events ({{ events[day.toISOString().split('T')[0]].length }})</summary>
+            <summary>
+              Events ({{ events[day.toISOString().split("T")[0]].length }})
+            </summary>
             <ul>
-              <li *ngFor="let event of events[day.toISOString().split('T')[0]]; let i = index"
-                  (click)="openEventDetails(day, i)">
-                <div class="event-title">{{ event.split(':')[0] }}</div>
-                <div class="event-desc">{{ event.split(':')[1] }}</div>
+              <li
+                *ngFor="
+                  let event of events[day.toISOString().split('T')[0]];
+                  let i = index
+                "
+                (click)="openEventDetails(day, i)"
+              >
+                <div class="event-title">{{ event.split(":")[0] }}</div>
+                <div class="event-desc">{{ event.split(":")[1] }}</div>
               </li>
             </ul>
           </details>
@@ -39,8 +51,11 @@
   <!-- Add Event Dialog -->
   <div *ngIf="showDialog" class="event-dialog">
     <h3>Add Event</h3>
-    <input [(ngModel)]="eventTitle" placeholder="Title">
-    <textarea [(ngModel)]="eventDescription" placeholder="Description"></textarea>
+    <input [(ngModel)]="eventTitle" placeholder="Title" />
+    <textarea
+      [(ngModel)]="eventDescription"
+      placeholder="Description"
+    ></textarea>
     <button (click)="addEvent()">Save</button>
     <button (click)="closeDialog()">Cancel</button>
   </div>
@@ -48,8 +63,8 @@
   <!-- View/Delete Event Dialog -->
   <div *ngIf="showEventPopup" class="event-dialog">
     <h3>Event Details</h3>
-    <p class="event-title">{{ selectedEvent.split(':')[0] }}</p>
-    <p class="event-desc">{{ selectedEvent.split(':')[1] }}</p>
+    <p class="event-title">{{ selectedEvent.split(":")[0] }}</p>
+    <p class="event-desc">{{ selectedEvent.split(":")[1] }}</p>
     <button (click)="deleteEvent()">Delete</button>
     <button (click)="closeEventDetails()">Close</button>
   </div>

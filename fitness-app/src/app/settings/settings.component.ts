@@ -8,7 +8,7 @@ import { FormsModule } from '@angular/forms';
   standalone: true,
   imports: [CommonModule, FormsModule],
   templateUrl: './settings.component.html',
-  styleUrls: ['./settings.component.css']
+  styleUrls: ['./settings.component.css'],
 })
 export class SettingsComponent implements OnInit {
   darkMode: boolean = false;
@@ -37,11 +37,15 @@ export class SettingsComponent implements OnInit {
 
   applyFontSize() {
     document.body.classList.remove('font-normal', 'font-large');
-    document.body.classList.add(this.fontSize === 'Large' ? 'font-large' : 'font-normal');
+    document.body.classList.add(
+      this.fontSize === 'Large' ? 'font-large' : 'font-normal'
+    );
   }
 
   downloadData() {
-    const confirmed = confirm('Do you want to download your fitness data as a readable text file?');
+    const confirmed = confirm(
+      'Do you want to download your fitness data as a readable text file?'
+    );
     if (!confirmed) return;
 
     const keys = {
@@ -50,7 +54,7 @@ export class SettingsComponent implements OnInit {
       distanceEntries: 'Distance Entries',
       nutritionEntries: 'Nutrition Entries',
       socialProfile: 'User Profile',
-      friendsList: 'Friends List'
+      friendsList: 'Friends List',
     };
 
     let output = '--- My Fitness App Data ---\n\n';
@@ -98,7 +102,9 @@ export class SettingsComponent implements OnInit {
   }
 
   clearAllData() {
-    const confirmed = confirm('Are you sure you want to delete all your data? This cannot be undone.');
+    const confirmed = confirm(
+      'Are you sure you want to delete all your data? This cannot be undone.'
+    );
     if (!confirmed) return;
 
     const keysToRemove = [
@@ -110,7 +116,7 @@ export class SettingsComponent implements OnInit {
       'friendsList',
       'darkMode',
       'preferredUnit',
-      'fontSize'
+      'fontSize',
     ];
 
     for (const key of keysToRemove) {
@@ -123,6 +129,6 @@ export class SettingsComponent implements OnInit {
   private formatKey(key: string): string {
     return key
       .replace(/([a-z])([A-Z])/g, '$1 $2')
-      .replace(/^./, c => c.toUpperCase());
+      .replace(/^./, (c) => c.toUpperCase());
   }
 }

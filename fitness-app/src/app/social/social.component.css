@@ -21,7 +21,7 @@ h2 {
   background: #f9f9f9;
   border: 2px solid black;
   border-radius: 10px;
-  margin-bottom: 20px;  /* Space between profile bubble and other content */
+  margin-bottom: 20px; /* Space between profile bubble and other content */
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Adding some shadow for a bubble effect */
 }
 

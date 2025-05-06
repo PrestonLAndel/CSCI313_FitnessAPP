@@ -3,10 +3,18 @@
 
   <form (ngSubmit)="addEntry()" #sleepForm="ngForm">
     <label for="date">Date:</label>
-    <input type="date" id="date" [(ngModel)]="date" name="date" required>
+    <input type="date" id="date" [(ngModel)]="date" name="date" required />
 
     <label for="hours">Hours Slept:</label>
-    <input type="number" id="hours" [(ngModel)]="hours" name="hours" min="0" max="24" required>
+    <input
+      type="number"
+      id="hours"
+      [(ngModel)]="hours"
+      name="hours"
+      min="0"
+      max="24"
+      required
+    />
 
     <div class="error" *ngIf="errorMessage">{{ errorMessage }}</div>
 
@@ -16,7 +24,12 @@
 
   <div *ngIf="sleepData.length > 0" class="summary">
     <p><strong>Total Average:</strong> {{ totalAverageHours }} hrs</p>
-    <p><strong>Last 7 Days Average:</strong> {{ weeklyAverageHours }} hrs ({{ weeklyEntryCount }} entries)</p>
+    <p>
+      <strong>Last 7 Days Average:</strong> {{ weeklyAverageHours }} hrs ({{
+        weeklyEntryCount
+      }}
+      entries)
+    </p>
   </div>
 
   <ul>

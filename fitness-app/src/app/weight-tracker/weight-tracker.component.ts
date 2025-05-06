@@ -73,5 +73,5 @@ export class WeightTrackerComponent implements AfterViewInit {
     this.weightservice.clearStoredData(); // Clears in-memory data
     this.chart?.destroy(); // Resets the chart
     window.location.reload(); // Refreshes the page for a full reset
-  }  
+  }
 }

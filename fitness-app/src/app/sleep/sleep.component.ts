@@ -12,7 +12,7 @@ interface SleepEntry {
   standalone: true,
   imports: [CommonModule, FormsModule],
   templateUrl: './sleep.component.html',
-  styleUrls: ['./sleep.component.css']
+  styleUrls: ['./sleep.component.css'],
 })
 export class SleepComponent implements OnInit {
   sleepData: SleepEntry[] = [];
@@ -35,7 +35,12 @@ export class SleepComponent implements OnInit {
   }
 
   addEntry() {
-    if (!this.date || this.hours === null || this.hours < 0 || this.hours > 24) {
+    if (
+      !this.date ||
+      this.hours === null ||
+      this.hours < 0 ||
+      this.hours > 24
+    ) {
       this.errorMessage = 'Please enter a valid number of hours (0–24).';
       return;
     }
@@ -77,7 +82,7 @@ export class SleepComponent implements OnInit {
     const oneWeekAgo = new Date();
     oneWeekAgo.setDate(oneWeekAgo.getDate() - 6);
 
-    const recentEntries = this.sleepData.filter(entry => {
+    const recentEntries = this.sleepData.filter((entry) => {
       const entryDate = new Date(entry.date);
       return entryDate >= oneWeekAgo;
     });
@@ -92,7 +97,7 @@ export class SleepComponent implements OnInit {
     const oneWeekAgo = new Date();
     oneWeekAgo.setDate(oneWeekAgo.getDate() - 6);
 
-    return this.sleepData.filter(entry => {
+    return this.sleepData.filter((entry) => {
       const entryDate = new Date(entry.date);
       return entryDate >= oneWeekAgo;
     }).length;

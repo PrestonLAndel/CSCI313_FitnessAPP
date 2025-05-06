@@ -4,14 +4,20 @@
   <!-- Profile Bubble Container -->
   <div class="profile-bubble">
     <!-- Name Section -->
-    <label>Name:
-      <input *ngIf="isEditing" [(ngModel)]="name" (blur)="saveProfile()">
+    <label
+      >Name:
+      <input *ngIf="isEditing" [(ngModel)]="name" (blur)="saveProfile()" />
       <span *ngIf="!isEditing">{{ name }}</span>
     </label>
 
     <!-- Bio Section -->
-    <label>Bio:
-      <textarea *ngIf="isEditing" [(ngModel)]="bio" (blur)="saveProfile()"></textarea>
+    <label
+      >Bio:
+      <textarea
+        *ngIf="isEditing"
+        [(ngModel)]="bio"
+        (blur)="saveProfile()"
+      ></textarea>
       <p *ngIf="!isEditing">{{ bio }}</p>
     </label>
 
@@ -23,7 +29,7 @@
   </div>
 
   <h3>Add Friend</h3>
-  <input [(ngModel)]="newFriend" placeholder="Friend name">
+  <input [(ngModel)]="newFriend" placeholder="Friend name" />
   <button (click)="addFriend()">Add</button>
 
   <h3>Friends List</h3>

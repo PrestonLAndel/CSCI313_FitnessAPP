@@ -7,7 +7,7 @@ import { FormsModule } from '@angular/forms';
   standalone: true,
   imports: [CommonModule, FormsModule],
   templateUrl: './planner.component.html',
-  styleUrls: ['./planner.component.css']
+  styleUrls: ['./planner.component.css'],
 })
 export class PlannerComponent implements OnInit {
   currentMonth: Date = new Date();
@@ -48,7 +48,9 @@ export class PlannerComponent implements OnInit {
   }
 
   changeMonth(offset: number) {
-    this.currentMonth = new Date(this.currentMonth.setMonth(this.currentMonth.getMonth() + offset));
+    this.currentMonth = new Date(
+      this.currentMonth.setMonth(this.currentMonth.getMonth() + offset)
+    );
     this.generateCalendar();
   }
 
@@ -67,7 +69,9 @@ export class PlannerComponent implements OnInit {
     if (!this.selectedDay) return;
 
     const dateKey = this.selectedDay.toISOString().split('T')[0];
-    const entry = this.eventTitle + (this.eventDescription ? `: ${this.eventDescription}` : '');
+    const entry =
+      this.eventTitle +
+      (this.eventDescription ? `: ${this.eventDescription}` : '');
 
     if (!this.events[dateKey]) {
       this.events[dateKey] = [];

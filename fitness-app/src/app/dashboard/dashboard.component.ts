@@ -7,7 +7,7 @@ import { RouterModule } from '@angular/router';
   standalone: true,
   imports: [CommonModule, RouterModule],
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  styleUrls: ['./dashboard.component.css'],
 })
 export class DashboardComponent implements OnInit {
   sleepAverage: number = 0;
@@ -35,7 +35,9 @@ export class DashboardComponent implements OnInit {
       const entries = JSON.parse(data);
       const last7 = entries.slice(-7);
       const total = last7.reduce((sum: number, e: any) => sum + e.hours, 0);
-      this.sleepAverage = last7.length ? Math.round((total / last7.length) * 10) / 10 : 0;
+      this.sleepAverage = last7.length
+        ? Math.round((total / last7.length) * 10) / 10
+        : 0;
     }
   }
 
@@ -51,7 +53,10 @@ export class DashboardComponent implements OnInit {
     const data = localStorage.getItem('plannerEvents');
     if (data) {
       const events = JSON.parse(data);
-      this.totalEvents = Object.values(events).reduce((count: number, list: any) => count + list.length, 0);
+      this.totalEvents = Object.values(events).reduce(
+        (count: number, list: any) => count + list.length,
+        0
+      );
     }
   }
 
@@ -59,7 +64,10 @@ export class DashboardComponent implements OnInit {
     const data = localStorage.getItem('distanceEntries');
     if (data) {
       const entries = JSON.parse(data);
-      this.totalDistance = entries.reduce((sum: number, e: any) => sum + Number(e.distance || 0), 0);
+      this.totalDistance = entries.reduce(
+        (sum: number, e: any) => sum + Number(e.distance || 0),
+        0
+      );
     }
     this.preferredUnit = localStorage.getItem('preferredUnit') || 'Miles';
   }

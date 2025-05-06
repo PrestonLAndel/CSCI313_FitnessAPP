@@ -11,15 +11,14 @@ interface Friend {
   standalone: true,
   imports: [CommonModule, FormsModule],
   templateUrl: './social.component.html',
-  styleUrls: ['./social.component.css']
+  styleUrls: ['./social.component.css'],
 })
-
 export class SocialComponent {
   name: string = 'John Doe';
   bio: string = 'This is my bio.';
   newFriend: string = '';
   friends: any[] = [];
-  isEditing: boolean = false;  // To toggle between Edit and View mode
+  isEditing: boolean = false; // To toggle between Edit and View mode
 
   editProfile() {
     this.isEditing = true;
@@ -34,7 +33,7 @@ export class SocialComponent {
   addFriend() {
     if (this.newFriend) {
       this.friends.push({ name: this.newFriend });
-      this.newFriend = '';  // Clear the input after adding
+      this.newFriend = ''; // Clear the input after adding
     }
   }
 

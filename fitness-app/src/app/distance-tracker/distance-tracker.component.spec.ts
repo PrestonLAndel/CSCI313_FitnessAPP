@@ -8,9 +8,8 @@ describe('DistanceTrackerComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [DistanceTrackerComponent]
-    })
-    .compileComponents();
+      imports: [DistanceTrackerComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(DistanceTrackerComponent);
     component = fixture.componentInstance;

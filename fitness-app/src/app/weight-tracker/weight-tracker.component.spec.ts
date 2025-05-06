@@ -8,9 +8,8 @@ describe('WeightTrackerComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [WeightTrackerComponent]
-    })
-    .compileComponents();
+      imports: [WeightTrackerComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(WeightTrackerComponent);
     component = fixture.componentInstance;

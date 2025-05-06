@@ -1,36 +1,50 @@
 <div class="distance-tracker">
-    <h2>Distance Tracker</h2>
-  
-    <form (ngSubmit)="addEntry()" #distanceForm="ngForm">
-      <label>Activity:
-        <select [(ngModel)]="selectedType" name="activity" required>
-          <option *ngFor="let type of activityTypes" [value]="type">{{ type }}</option>
-        </select>
-      </label>
-  
-      <label>Distance:
-        <input type="number" [(ngModel)]="distance" name="distance" required min="0">
-      </label>
-  
-      <label>Time (minutes):
-        <input type="number" [(ngModel)]="time" name="time" required min="0">
-      </label>
-  
-      <button type="submit">Add Entry</button>
-    </form>
-  
-    <label>Sort by:
-      <select [(ngModel)]="sortField" name="sort">
-        <option *ngFor="let field of sortOptions" [value]="field">{{ field }}</option>
+  <h2>Distance Tracker</h2>
+
+  <form (ngSubmit)="addEntry()" #distanceForm="ngForm">
+    <label
+      >Activity:
+      <select [(ngModel)]="selectedType" name="activity" required>
+        <option *ngFor="let type of activityTypes" [value]="type">
+          {{ type }}
+        </option>
       </select>
     </label>
-  
-    <ul class="entry-list">
-      <li *ngFor="let entry of getSortedEntries(); let i = index">
-        {{ entry.date }} — {{ entry.type }}: {{ entry.distance }} {{ entry.unit }} in {{ entry.time }} min
-        <span *ngIf="entry.distance > 0"> — Pace: {{ getPace(entry) }}</span>
-        <button (click)="deleteEntry(i)">Delete</button>
-      </li>
-    </ul>
-  </div>
-  
+
+    <label
+      >Distance:
+      <input
+        type="number"
+        [(ngModel)]="distance"
+        name="distance"
+        required
+        min="0"
+      />
+    </label>
+
+    <label
+      >Time (minutes):
+      <input type="number" [(ngModel)]="time" name="time" required min="0" />
+    </label>
+
+    <button type="submit">Add Entry</button>
+  </form>
+
+  <label
+    >Sort by:
+    <select [(ngModel)]="sortField" name="sort">
+      <option *ngFor="let field of sortOptions" [value]="field">
+        {{ field }}
+      </option>
+    </select>
+  </label>
+
+  <ul class="entry-list">
+    <li *ngFor="let entry of getSortedEntries(); let i = index">
+      {{ entry.date }} — {{ entry.type }}: {{ entry.distance }}
+      {{ entry.unit }} in {{ entry.time }} min
+      <span *ngIf="entry.distance > 0"> — Pace: {{ getPace(entry) }}</span>
+      <button (click)="deleteEntry(i)">Delete</button>
+    </li>
+  </ul>
+</div>

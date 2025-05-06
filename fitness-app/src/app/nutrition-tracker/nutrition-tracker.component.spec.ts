@@ -9,9 +9,8 @@ describe('NutritionTrackerComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [NutritionTrackerComponent]
-    })
-    .compileComponents();
+      imports: [NutritionTrackerComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(NutritionTrackerComponent);
     component = fixture.componentInstance;

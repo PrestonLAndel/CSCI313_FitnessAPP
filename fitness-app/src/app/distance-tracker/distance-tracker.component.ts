@@ -15,11 +15,18 @@ interface DistanceEntry {
   standalone: true,
   imports: [CommonModule, FormsModule],
   templateUrl: './distance-tracker.component.html',
-  styleUrls: ['./distance-tracker.component.css']
+  styleUrls: ['./distance-tracker.component.css'],
 })
 export class DistanceTrackerComponent implements OnInit {
   activityTypes: string[] = [
-    'Walking', 'Running', 'Jogging', 'Sprinting', 'Biking', 'Swimming', 'Rowing', 'Kayaking'
+    'Walking',
+    'Running',
+    'Jogging',
+    'Sprinting',
+    'Biking',
+    'Swimming',
+    'Rowing',
+    'Kayaking',
   ];
   selectedType: string = 'Walking';
   distance: number = 0;
@@ -43,7 +50,7 @@ export class DistanceTrackerComponent implements OnInit {
       type: this.selectedType,
       distance: this.distance,
       time: this.time,
-      unit: this.unit
+      unit: this.unit,
     });
 
     this.save();
