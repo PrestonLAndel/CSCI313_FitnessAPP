@@ -1,0 +1,36 @@
+<div class="dashboard">
+    <h2>Welcome to Your Fitness Dashboard</h2>
+  
+    <div class="dashboard-grid">
+      <a class="card" [routerLink]="'/sleep'">
+        <h3>Sleep Summary</h3>
+        <p>Average this week: {{ sleepAverage }} hrs</p>
+      </a>
+  
+      <a class="card" [routerLink]="'/weight-tracker'">
+        <h3>Weight Tracker</h3>
+        <p>Latest weight: {{ latestWeight }} lbs</p>
+      </a>
+  
+      <a class="card" [routerLink]="'/planner'">
+        <h3>Planner</h3>
+        <p>Planned events: {{ totalEvents }}</p>
+      </a>
+  
+      <a class="card" [routerLink]="'/distance-tracker'">
+        <h3>Distance Tracker</h3>
+        <p>Total distance: {{ totalDistance }} {{ preferredUnit }}</p>
+      </a>
+  
+      <a class="card" [routerLink]="'/nutrition-tracker'">
+        <h3>Nutrition</h3>
+        <p>Today's Water: {{ waterToday }} cups<br>Calories: {{ caloriesToday }} kcal</p>
+      </a>
+  
+      <a class="card" [routerLink]="'/social'">
+        <h3>Social</h3>
+        <p>{{ friendCount }} friends<br>Username: {{ profileName }}</p>
+      </a>
+    </div>
+  </div>
+  
