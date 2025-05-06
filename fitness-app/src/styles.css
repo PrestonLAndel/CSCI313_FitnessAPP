@@ -13,3 +13,11 @@ body.dark-mode {
     color: #fff;
   }
   
+  body.font-normal, body.font-normal * {
+    font-size: 16px !important;
+  }
+  
+  body.font-large, body.font-large * {
+    font-size: 20px !important;
+  }
+  

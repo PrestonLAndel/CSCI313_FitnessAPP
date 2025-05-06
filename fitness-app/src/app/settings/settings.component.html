@@ -1,11 +1,34 @@
 <div class="settings">
-    <h2>Settings</h2>
-    <div class="setting-option">
-      <span>Enable Dark Mode</span>
-      <label class="switch">
-        <input type="checkbox" [checked]="darkMode" (change)="toggleDarkMode()">
-        <span class="slider"></span>
-      </label>
-    </div>
+  <h2>Settings</h2>
+
+  <div class="setting-option">
+    <span>Enable Dark Mode</span>
+    <label class="switch">
+      <input type="checkbox" [checked]="darkMode" (change)="toggleDarkMode()">
+      <span class="slider"></span>
+    </label>
   </div>
-  
+
+  <div class="setting-option">
+    <label>Preferred Distance Unit:
+      <select [(ngModel)]="preferredUnit" (change)="savePreferences()">
+        <option value="Miles">Miles</option>
+        <option value="Kilometers">Kilometers</option>
+      </select>
+    </label>
+  </div>
+
+  <div class="setting-option">
+    <label>Font Size:
+      <select [(ngModel)]="fontSize" (change)="savePreferences()">
+        <option value="Normal">Normal</option>
+        <option value="Large">Large</option>
+      </select>
+    </label>
+  </div>
+
+  <div class="setting-buttons">
+    <button type="button" (click)="downloadData()">Download My Data</button>
+    <button type="button" (click)="clearAllData()" class="danger">Delete All Data</button>
+  </div>
+</div>

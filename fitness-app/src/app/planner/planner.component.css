@@ -1,88 +1,125 @@
 .calendar {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 20px;
-}
-
-button {
-  padding: 10px;
-  margin: 5px;
-  background-color: #4caf50;
-  color: white;
-  border: none;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #45a049;
+  text-align: center;
+  padding: 20px;
 }
 
 .calendar-grid {
   display: grid;
-  grid-template-columns: repeat(7, 1fr); /* Create 7 columns for the days of the week */
+  grid-template-columns: repeat(7, 1fr);
   gap: 10px;
   margin-top: 20px;
 }
 
 .day-header {
-  text-align: center;
   font-weight: bold;
-}
-
-/* ADDED: Make header align with calendar */
-.calendar-header {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  width: 100%;
-  gap: 10px;
-  margin-top: 20px;
-  text-align: center;
 }
 
 .calendar-day {
+  border: 1px solid #ddd;
+  padding: 10px;
+  min-height: 100px;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  padding: 10px;
-  border: 1px solid #ccc;
-  background-color: #f9f9f9;
-  min-width: 50px;
-  min-height: 50px;
+  background: #f9f9f9;
 }
 
 .day-number {
-  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.calendar-day button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.calendar-day button:hover {
+  background-color: #388e3c;
+}
+
+.event-list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+li {
+  background-color: #e0f2f1;
+  padding: 6px 8px;
+  border-radius: 6px;
+  max-width: 90%;
+  font-size: 13px;
+  list-style: none;
+  text-align: left;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  cursor: pointer;
+}
+
+li .event-title {
   font-weight: bold;
 }
 
-.events {
-  margin-top: 10px;
+li .event-desc {
+  font-size: 12px;
+  color: #555;
+  margin-top: 2px;
 }
 
+/* Popup styling */
 .event-dialog {
   position: fixed;
   top: 30%;
   left: 50%;
   transform: translate(-50%, -30%);
-  padding: 20px;
-  background-color: white;
+  background: white;
   border: 1px solid #ccc;
+  padding: 20px;
   z-index: 1000;
+  width: 300px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  text-align: left;
+}
+
+.event-dialog h3 {
+  text-align: center;
+  margin-bottom: 15px;
 }
 
 .event-dialog input,
 .event-dialog textarea {
   width: 100%;
   padding: 8px;
-  margin: 10px 0;
-  border: 1px solid #ccc;
+  margin-bottom: 12px;
+  font-size: 14px;
+  box-sizing: border-box;
 }
 
 .event-dialog button {
+  padding: 8px 12px;
+  margin-right: 10px;
+  font-size: 14px;
+  cursor: pointer;
+  border: none;
+  border-radius: 4px;
+}
+
+.event-dialog button:first-of-type {
   background-color: #4caf50;
   color: white;
-  padding: 10px;
-  border: none;
-  cursor: pointer;
+}
+
+.event-dialog button:last-of-type {
+  background-color: #ccc;
+  color: black;
 }

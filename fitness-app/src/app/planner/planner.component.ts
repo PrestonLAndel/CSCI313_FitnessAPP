@@ -14,14 +14,19 @@ export class PlannerComponent implements OnInit {
   daysInMonth: (Date | null)[] = [];
   events: { [date: string]: string[] } = {};
 
-  // Dialog state
   showDialog: boolean = false;
   selectedDay: Date | null = null;
   eventTitle: string = '';
   eventDescription: string = '';
 
+  showEventPopup: boolean = false;
+  selectedEvent: string = '';
+  selectedEventIndex: number = -1;
+
   ngOnInit() {
     this.generateCalendar();
+    const saved = localStorage.getItem('plannerEvents');
+    this.events = saved ? JSON.parse(saved) : {};
   }
 
   generateCalendar() {
@@ -31,7 +36,6 @@ export class PlannerComponent implements OnInit {
     const lastDay = new Date(year, month + 1, 0);
     const days: (Date | null)[] = [];
 
-    // Pad empty days for calendar alignment
     for (let i = 0; i < firstDay.getDay(); i++) {
       days.push(null);
     }
@@ -63,13 +67,46 @@ export class PlannerComponent implements OnInit {
     if (!this.selectedDay) return;
 
     const dateKey = this.selectedDay.toISOString().split('T')[0];
-    const entry = `${this.eventTitle}${this.eventDescription ? ': ' + this.eventDescription : ''}`;
+    const entry = this.eventTitle + (this.eventDescription ? `: ${this.eventDescription}` : '');
 
     if (!this.events[dateKey]) {
       this.events[dateKey] = [];
     }
 
     this.events[dateKey].push(entry);
+    this.saveEvents();
     this.showDialog = false;
+  }
+
+  saveEvents() {
+    localStorage.setItem('plannerEvents', JSON.stringify(this.events));
+  }
+
+  openEventDetails(day: Date, index: number) {
+    const dateKey = day.toISOString().split('T')[0];
+    this.selectedDay = day;
+    this.selectedEvent = this.events[dateKey][index];
+    this.selectedEventIndex = index;
+    this.showEventPopup = true;
+  }
+
+  closeEventDetails() {
+    this.showEventPopup = false;
+    this.selectedEvent = '';
+    this.selectedEventIndex = -1;
+  }
+
+  deleteEvent() {
+    if (!this.selectedDay || this.selectedEventIndex === -1) return;
+
+    const dateKey = this.selectedDay.toISOString().split('T')[0];
+    this.events[dateKey].splice(this.selectedEventIndex, 1);
+
+    if (this.events[dateKey].length === 0) {
+      delete this.events[dateKey];
+    }
+
+    this.saveEvents();
+    this.closeEventDetails();
   }
 }

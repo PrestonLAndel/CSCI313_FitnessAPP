@@ -4,7 +4,6 @@
   <button (click)="changeMonth(1)">Next</button>
 
   <div class="calendar-grid">
-    <!-- Days of the week header -->
     <div class="day-header">Sun</div>
     <div class="day-header">Mon</div>
     <div class="day-header">Tue</div>
@@ -13,29 +12,43 @@
     <div class="day-header">Fri</div>
     <div class="day-header">Sat</div>
 
-    <!-- Calendar Days -->
     <div *ngFor="let day of daysInMonth" class="calendar-day">
       <div *ngIf="day" class="day-content">
         <div class="day-number">{{ day.getDate() }}</div>
-        <div *ngIf="events[day.toISOString().split('T')[0]]">
-          <ul>
-            <li *ngFor="let event of events[day.toISOString().split('T')[0]]">
-              {{ event }}
-            </li>
-          </ul>
+
+        <div *ngIf="events[day.toISOString().split('T')[0]]" class="event-list">
+          <details>
+            <summary>Events ({{ events[day.toISOString().split('T')[0]].length }})</summary>
+            <ul>
+              <li *ngFor="let event of events[day.toISOString().split('T')[0]]; let i = index"
+                  (click)="openEventDetails(day, i)">
+                <div class="event-title">{{ event.split(':')[0] }}</div>
+                <div class="event-desc">{{ event.split(':')[1] }}</div>
+              </li>
+            </ul>
+          </details>
         </div>
+
         <button (click)="openDialog(day)">Add Event</button>
       </div>
-      <div *ngIf="!day"></div>
     </div>
   </div>
 
-  <!-- Event Dialog -->
+  <!-- Add Event Dialog -->
   <div *ngIf="showDialog" class="event-dialog">
     <h3>Add Event</h3>
-    <input [(ngModel)]="eventTitle" placeholder="Event title">
-    <textarea [(ngModel)]="eventDescription" placeholder="Event description"></textarea>
+    <input [(ngModel)]="eventTitle" placeholder="Title">
+    <textarea [(ngModel)]="eventDescription" placeholder="Description"></textarea>
     <button (click)="addEvent()">Save</button>
     <button (click)="closeDialog()">Cancel</button>
+  </div>
+
+  <!-- View/Delete Event Dialog -->
+  <div *ngIf="showEventPopup" class="event-dialog">
+    <h3>Event Details</h3>
+    <p class="event-title">{{ selectedEvent.split(':')[0] }}</p>
+    <p class="event-desc">{{ selectedEvent.split(':')[1] }}</p>
+    <button (click)="deleteEvent()">Delete</button>
+    <button (click)="closeEventDetails()">Close</button>
   </div>
 </div>
