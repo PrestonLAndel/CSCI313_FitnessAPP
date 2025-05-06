@@ -1,1 +1,22 @@
-<p>social works!</p>
+<div class="social-profile">
+    <h2>Your Profile</h2>
+    <label>Name:
+      <input [(ngModel)]="name" (blur)="saveProfile()">
+    </label>
+    <label>Bio:
+      <textarea [(ngModel)]="bio" (blur)="saveProfile()"></textarea>
+    </label>
+  
+    <h3>Add Friend</h3>
+    <input [(ngModel)]="newFriend" placeholder="Friend name">
+    <button (click)="addFriend()">Add</button>
+  
+    <h3>Friends List</h3>
+    <ul class="friends-list">
+      <li *ngFor="let friend of friends; let i = index">
+        {{ friend.name }}
+        <button (click)="deleteFriend(i)">Remove</button>
+      </li>
+    </ul>
+  </div>
+  

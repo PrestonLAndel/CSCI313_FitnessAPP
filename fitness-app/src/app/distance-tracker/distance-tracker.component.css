@@ -1,0 +1,61 @@
+.distance-tracker {
+    padding: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 20px;
+  }
+  
+  label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+  }
+  
+  input, select {
+    flex: 1;
+    padding: 8px;
+    margin-left: 10px;
+    font-size: 1rem;
+  }
+  
+  button {
+    width: fit-content;
+    align-self: flex-end;
+    padding: 8px 16px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #388e3c;
+  }
+  
+  .entry-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .entry-list li {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .entry-list button {
+    background-color: #e53935;
+    padding: 5px 10px;
+    font-size: 0.9rem;
+  }
+  

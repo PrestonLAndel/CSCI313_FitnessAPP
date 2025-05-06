@@ -1,44 +1,41 @@
 <div class="calendar">
-    <button (click)="changeMonth(-1)">Previous</button>
-    <h2>{{ currentMonth.toLocaleString('default', { month: 'long' }) }} {{ currentMonth.getFullYear() }}</h2>
-    <button (click)="changeMonth(1)">Next</button>
-  
-    <div class="calendar-grid">
-      <!-- Header for days of the week -->
-      <div class="calendar-header">
-        <div class="day-header">Sun</div>
-        <div class="day-header">Mon</div>
-        <div class="day-header">Tue</div>
-        <div class="day-header">Wed</div>
-        <div class="day-header">Thu</div>
-        <div class="day-header">Fri</div>
-        <div class="day-header">Sat</div>
-      </div>
-  
-      <!-- Calendar Days -->
-      <div *ngFor="let day of daysInMonth" class="calendar-day">
-        <!-- Show day only if it's not null -->
-        <div *ngIf="day" class="day-content">
-          <div class="day-number">{{ day.getDate() }}</div>
-          <div *ngIf="events[day.toISOString().split('T')[0]]">
-            <ul>
-              <li *ngFor="let event of events[day.toISOString().split('T')[0]]">
-                <strong>{{ event.title }}</strong>: {{ event.description }}
-              </li>
-            </ul>
-          </div>
-          <button (click)="openEventDialog(day)">Add Event</button>
+  <button (click)="changeMonth(-1)">Previous</button>
+  <h2>{{ currentMonth.toLocaleString('default', { month: 'long' }) }} {{ currentMonth.getFullYear() }}</h2>
+  <button (click)="changeMonth(1)">Next</button>
+
+  <div class="calendar-grid">
+    <!-- Days of the week header -->
+    <div class="day-header">Sun</div>
+    <div class="day-header">Mon</div>
+    <div class="day-header">Tue</div>
+    <div class="day-header">Wed</div>
+    <div class="day-header">Thu</div>
+    <div class="day-header">Fri</div>
+    <div class="day-header">Sat</div>
+
+    <!-- Calendar Days -->
+    <div *ngFor="let day of daysInMonth" class="calendar-day">
+      <div *ngIf="day" class="day-content">
+        <div class="day-number">{{ day.getDate() }}</div>
+        <div *ngIf="events[day.toISOString().split('T')[0]]">
+          <ul>
+            <li *ngFor="let event of events[day.toISOString().split('T')[0]]">
+              {{ event }}
+            </li>
+          </ul>
         </div>
+        <button (click)="openDialog(day)">Add Event</button>
       </div>
+      <div *ngIf="!day"></div>
     </div>
   </div>
-  
-  <!-- Event Dialog (Simple input form) -->
-  <div *ngIf="selectedDay" class="event-dialog">
-    <h3>Add Event for {{ selectedDay | date: 'fullDate' }}</h3>
-    <input [(ngModel)]="eventTitle" placeholder="Event Title">
-    <textarea [(ngModel)]="eventDescription" placeholder="Event Description"></textarea>
-    <button (click)="addEvent(selectedDay, eventTitle, eventDescription)">Add Event</button>
-    <button (click)="selectedDay = null">Close</button>
+
+  <!-- Event Dialog -->
+  <div *ngIf="showDialog" class="event-dialog">
+    <h3>Add Event</h3>
+    <input [(ngModel)]="eventTitle" placeholder="Event title">
+    <textarea [(ngModel)]="eventDescription" placeholder="Event description"></textarea>
+    <button (click)="addEvent()">Save</button>
+    <button (click)="closeDialog()">Cancel</button>
   </div>
-  
+</div>

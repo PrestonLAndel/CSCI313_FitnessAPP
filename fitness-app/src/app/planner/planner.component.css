@@ -1,79 +1,88 @@
 .calendar {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 20px;
-  }
-  
-  button {
-    padding: 10px;
-    margin: 5px;
-    background-color: #4caf50;
-    color: white;
-    border: none;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: #45a049;
-  }
-  
-  .calendar-grid {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr); /* Create 7 columns for the days of the week */
-    gap: 10px;
-    margin-top: 20px;
-  }
-  
-  .day-header {
-    text-align: center;
-    font-weight: bold;
-  }
-  
-  .calendar-day {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 10px;
-    border: 1px solid #ccc;
-    background-color: #f9f9f9;
-    min-width: 50px;
-    min-height: 50px; /* Ensure a square shape for the day cells */
-  }
-  
-  .day-number {
-    font-size: 18px;
-    font-weight: bold;
-  }
-  
-  .events {
-    margin-top: 10px;
-  }
-  
-  .event-dialog {
-    position: fixed;
-    top: 30%;
-    left: 50%;
-    transform: translate(-50%, -30%);
-    padding: 20px;
-    background-color: white;
-    border: 1px solid #ccc;
-    z-index: 1000;
-  }
-  
-  .event-dialog input,
-  .event-dialog textarea {
-    width: 100%;
-    padding: 8px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-  }
-  
-  .event-dialog button {
-    background-color: #4caf50;
-    color: white;
-    padding: 10px;
-    border: none;
-    cursor: pointer;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+button {
+  padding: 10px;
+  margin: 5px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr); /* Create 7 columns for the days of the week */
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.day-header {
+  text-align: center;
+  font-weight: bold;
+}
+
+/* ADDED: Make header align with calendar */
+.calendar-header {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  width: 100%;
+  gap: 10px;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.calendar-day {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid #ccc;
+  background-color: #f9f9f9;
+  min-width: 50px;
+  min-height: 50px;
+}
+
+.day-number {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.events {
+  margin-top: 10px;
+}
+
+.event-dialog {
+  position: fixed;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -30%);
+  padding: 20px;
+  background-color: white;
+  border: 1px solid #ccc;
+  z-index: 1000;
+}
+
+.event-dialog input,
+.event-dialog textarea {
+  width: 100%;
+  padding: 8px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+}
+
+.event-dialog button {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+}

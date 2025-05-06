@@ -1,1 +1,26 @@
-<p>nutrition-tracker works!</p>
+<div class="nutrition-tracker">
+    <h2>Nutrition Tracker</h2>
+  
+    <form (ngSubmit)="addEntry()">
+      <label>Water Intake (oz):</label>
+      <input type="number" [(ngModel)]="water" name="water" required min="0">
+  
+      <label>Calories Consumed:</label>
+      <input type="number" [(ngModel)]="calories" name="calories" required min="0">
+  
+      <button type="submit">Add / Update Entry</button>
+    </form>
+  
+    <div class="averages">
+      <p>Average Daily Water: {{ getAverageWater() }} oz</p>
+      <p>Average Daily Calories: {{ getAverageCalories() }} kcal</p>
+    </div>
+  
+    <ul>
+      <li *ngFor="let entry of entries; let i = index">
+        <strong>{{ entry.date }}</strong> - Water: {{ entry.water }} oz, Calories: {{ entry.calories }} kcal
+        <button (click)="deleteEntry(i)">Delete</button>
+      </li>
+    </ul>
+  </div>
+  
